@@ -1,0 +1,32 @@
+@font-face
+    font-family: 'Gotham Pro'
+    src: url("../fonts/gotam/GothamPro-Medium.ttf")
+$fontFamily: 'Gotham Pro', Roboto
+
+html, body
+    margin: 0 auto
+    padding: 0
+    font-size: 100%
+    background-color: #c0c0c0
+
+@mixin size($width: auto, $height: auto)
+    width: $width
+    min-height: $height
+
+@mixin flex($width, $height)
+    display: flex
+    @include size($width, $height)
+
+@mixin flex-center($width, $height)
+    align-items: center
+    justify-content: center
+    @include flex($width, $height)
+
+@mixin text($size: inherit, $color: #000000, $fontFamily, $weight: inherit, $line: initial, $case: inherit, $spacing: auto)
+    font-size: $size
+    color: $color
+    font-family: $fontFamily
+    font-weight: $weight
+    line-height: $line
+    text-transform: $case
+    letter-spacing: $spacing

@@ -12,7 +12,8 @@ let path = {
     },
     src: {
         html: [sourse_folder + '/*.html', '!' + sourse_folder + '/_*.html'],
-        css: sourse_folder+ '/style/style.css',
+        css: [sourse_folder + '/sass/style.sass', '!' + sourse_folder + '/sass/_*.sass'],
+        // css: sourse_folder+ '/sass/style.sass',
         js: sourse_folder + '/js/script.js',
         img: sourse_folder + '/image/**/*.{jpg,png,svg,giv,ico,webp}',
         fonts: sourse_folder + '/fonts/*.ttf',
@@ -20,7 +21,7 @@ let path = {
     },
     watch: {
         html: sourse_folder + '/**/*.html',
-        css: sourse_folder+ '/style/**/*.sass',
+        css: sourse_folder + '/sass/**/*.sass',
         js: sourse_folder + '/js/**/*.js',
         img: sourse_folder + '/image/**/*.{jpg,png,svg,gif,ico,webp}',
         media: sourse_folder + '/media/**/*.css',
@@ -33,7 +34,11 @@ let { src, dest } = require('gulp'),
     browsersync = require('browser-sync').create(),
     fileinclude = require('gulp-file-include'),
     del = require('del'),
-    sass = require('gulp-sass');
+    sass = require('gulp-sass'),
+    autoprefixer = require('gulp-autoprefixer'),
+    group_media = require('gulp-group-css-media-queries');
+    // clean_css = require('gulp-clean-css'),
+    // rename = require('gulp-rename');
 
     
 
@@ -58,9 +63,25 @@ function css() {
     return src(path.src.css)
         .pipe(
             sass({
-               outputStyle: 'expanded' 
+            outputStyle: 'expanded' 
             })
+    )
+        .pipe(
+            group_media()
         )
+        .pipe(
+            autoprefixer({
+                overrideBrowserslist: ['last 5 versions'],
+                cascade: true
+            })
+    )
+        
+        // .pipe(clean_css())
+        // .pipe(
+        //     rename({
+        //         extname: '.min.css'
+        //     })
+        // )
         .pipe(dest(path.build.css))
         .pipe(browsersync.stream())  
 }
@@ -77,6 +98,9 @@ function clean(params) {
 let build = gulp.series(clean, gulp.parallel(css, html));
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
+
+// exports.clean_css = clean_css;
+// exports.rename = rename;
 exports.css = css;
 exports.html = html;
 exports.build = build;

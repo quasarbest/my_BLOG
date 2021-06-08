@@ -13,7 +13,7 @@ section {
 }
 
 body {
-  background-color: #9310c7;
+  background-color: #fd0404;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -78,7 +78,7 @@ section {
 @media screen and (max-width: 1501px) {
   body {
     font-size: 90%;
-    background-color: #a210c7;
+    background-color: #1fc710;
   }
 }
 

@@ -43,7 +43,9 @@ let { src, dest } = require('gulp'),
     clean_css = require('gulp-clean-css'),
     rename = require('gulp-rename'),
     uglify = require('gulp-uglify-es').default,
-    imagemin = require('gulp-imagemin');
+    imagemin = require('gulp-imagemin'),
+    webp = require('gulp-webp'),
+    webphtml = require('gulp-webp-html');
 
 function browserSync(params) {
     browsersync.init({
@@ -58,6 +60,7 @@ function browserSync(params) {
 function html() {
     return src(path.src.html)
         .pipe(fileinclude())
+        .pipe(webphtml())
         .pipe(dest(path.build.html))
         .pipe(browsersync.stream())
 }
@@ -81,6 +84,13 @@ function libs() {
 }
 function images() {
     return src(path.src.img)
+        .pipe(
+            webp({
+                quality: 70 // 0 to 10 - качество изображения
+            })
+    )
+        .pipe(dest(path.build.img))
+        .pipe(src(path.src.img))
         .pipe(
             imagemin({
                 progressive: true,

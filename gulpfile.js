@@ -9,23 +9,25 @@ let path = {
         img: project_folder + '/image/',
         fonts: project_folder + '/fonts/',
         media: project_folder + '/media/',
+        libs: project_folder + '/librarys/',
     },
     src: {
         html: [sourse_folder + '/*.html', '!' + sourse_folder + '/_*.html'],
-        // css: [sourse_folder + '/sass/style.sass', '!' + sourse_folder + '/sass/_*.sass'],
         css: sourse_folder+ '/sass/style.sass',
         js: sourse_folder + '/js/*.js',
         img: sourse_folder + '/image/**/*.{jpg,png,svg,giv,ico,webp}',
         fonts: sourse_folder + '/fonts/*.ttf',
         media: sourse_folder + '/media/media.css',
+        libs: sourse_folder + '/librarys/**/.',
     },
     watch: {
-
         html: sourse_folder + '/**/*.html',
         css: sourse_folder + '/sass/**/*.sass',
         js: sourse_folder + '/js/**/*.js',
         img: sourse_folder + '/image/**/*.{jpg,png,svg,gif,ico,webp}',
         media: sourse_folder + '/media/**/*.css',
+        fonts: sourse_folder + '/fonts/*.ttf',
+        libs: sourse_folder + '/librarys/**/*',
     },
     clean: './' + project_folder + '/'
 }
@@ -63,6 +65,18 @@ function media() {
     return src(path.src.media)
         .pipe(fileinclude())
         .pipe(dest(path.build.media))
+        .pipe(browsersync.stream())
+}
+function fonts() {
+    return src(path.src.fonts)
+        .pipe(fileinclude())
+        .pipe(dest(path.build.fonts))
+        .pipe(browsersync.stream())
+}
+function libs() {
+    return src(path.src.libs)
+        .pipe(fileinclude())
+        .pipe(dest(path.build.libs))
         .pipe(browsersync.stream())
 }
 
@@ -106,16 +120,18 @@ function watchFiles(params) {
     gulp.watch([path.watch.css], css);
     gulp.watch([path.watch.js], js);
     gulp.watch([path.watch.media], media);
+    gulp.watch([path.watch.fonts], fonts);
+    gulp.watch([path.watch.libs], libs);
 }
 function clean(params) {
     return del(path.clean);
 }
 
-let build = gulp.series(clean, gulp.parallel(media, js, css, html));
+let build = gulp.series(clean, gulp.parallel(libs, fonts, media, js, css, html));
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
 
-exports.media = media;
+// exports.media = media;
 exports.js = js;
 exports.css = css;
 exports.html = html;

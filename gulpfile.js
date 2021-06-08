@@ -13,7 +13,7 @@ let path = {
     },
     src: {
         html: [sourse_folder + '/*.html', '!' + sourse_folder + '/_*.html'],
-        css: sourse_folder+ '/sass/style.sass',
+        css: sourse_folder+ '/sass/*.sass',
         js: sourse_folder + '/js/*.js',
         img: sourse_folder + '/image/**/*.{jpg,png,svg,giv,ico,webp}',
         fonts: sourse_folder + '/fonts/*.ttf',
@@ -131,7 +131,9 @@ let build = gulp.series(clean, gulp.parallel(libs, fonts, media, js, css, html))
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
 
-// exports.media = media;
+exports.libs = libs;
+exports.media = media;
+exports.fonts = fonts;
 exports.js = js;
 exports.css = css;
 exports.html = html;

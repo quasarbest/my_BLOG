@@ -1,27 +1,7 @@
-// @import "_mixins"
+@import "_mixins"
 
-// @font-face
-//     font-family: Roboto
-//     src: url("")
 
-html, body
-    margin: 0 auto
-    padding: 0
-    font-size: 100%
-    background-color: #8a0000
 
-@mixin size($width: auto, $height: auto)
-    width: $width
-    min-height: $height
-
-@mixin flex($width, $height)
-    display: flex
-    @include size($width, $height)
-
-@mixin flex-center($width, $height)
-    align-items: center
-    justify-content: center
-    @include flex($width, $height)
 
 @mixin text($size: inherit, $color: #000000, $weight: inherit, $line: initial, $case: inherit, $spacing: auto)
     font-size: $size
@@ -58,7 +38,11 @@ section
 
 .ffaf
     background-color: #1231e0
+    @include flex(69%,10vh)
+    flex-direction: column
     p
         font-size: 10px
         @include flex-center (80%,15vh)
         @include text (2em, #ad0c0c, 800, auto, inherit, auto )
+.cool 
+    flex-direction: column

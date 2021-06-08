@@ -3,7 +3,13 @@ body {
   margin: 0 auto;
   padding: 0;
   font-size: 100%;
-  background-color: #8a0000;
+  background-color: #50eb13;
+}
+
+section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 body {
@@ -30,6 +36,15 @@ section {
 
 .ffaf {
   background-color: #1231e0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 69%;
+  min-height: 10vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .ffaf p {
@@ -51,6 +66,13 @@ section {
   line-height: auto;
   text-transform: inherit;
   letter-spacing: auto;
+}
+
+.cool {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 @media screen and (max-width: 1501px) {

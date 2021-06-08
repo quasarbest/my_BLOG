@@ -6,3 +6,4 @@
 // alert(result + ' m2')
 
 // @@include('alert.js') - // для того что бы подключить любой файл в папке js к главному script.js
+// @@include('alert.js')

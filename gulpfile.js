@@ -1,4 +1,5 @@
-let project_folder = 'dist';
+
+let project_folder = require('path').basename(__dirname);
 let sourse_folder = '#src';
 
 let path = {
@@ -16,17 +17,17 @@ let path = {
         css: sourse_folder+ '/sass/*.sass',
         js: sourse_folder + '/js/*.js',
         img: sourse_folder + '/image/**/*.{jpg,png,svg,giv,ico,webp}',
-        fonts: sourse_folder + '/fonts/*.ttf',
+        fonts: sourse_folder + '/fonts/**/*.ttf',
         media: sourse_folder + '/media/media.css',
         libs: sourse_folder + '/librarys/**/.',
     },
     watch: {
         html: sourse_folder + '/**/*.html',
-        css: sourse_folder + '/sass/**/*.sass',
+        css: sourse_folder + '/sass/*.sass',
         js: sourse_folder + '/js/**/*.js',
         img: sourse_folder + '/image/**/*.{jpg,png,svg,gif,ico,webp}',
         media: sourse_folder + '/media/**/*.css',
-        fonts: sourse_folder + '/fonts/*.ttf',
+        fonts: sourse_folder + '/fonts/**/*.ttf',
         libs: sourse_folder + '/librarys/**/*',
     },
     clean: './' + project_folder + '/'
@@ -45,7 +46,11 @@ let { src, dest } = require('gulp'),
     uglify = require('gulp-uglify-es').default,
     imagemin = require('gulp-imagemin'),
     webp = require('gulp-webp'),
-    webphtml = require('gulp-webp-html');
+    webphtml = require('gulp-webp-html'),
+    webpcss = require('gulp-webpcss'),
+    ttf2woff = require('gulp-ttf2woff'),
+    ttf2woff2 = require('gulp-ttf2woff2'),
+    fonter = require('gulp-fonter');
 
 function browserSync(params) {
     browsersync.init({
@@ -86,7 +91,7 @@ function images() {
     return src(path.src.img)
         .pipe(
             webp({
-                quality: 70 // 0 to 10 - качество изображения
+                quality: 60 // 0 to 100 - качество изображения
             })
     )
         .pipe(dest(path.build.img))
@@ -102,6 +107,16 @@ function images() {
         .pipe(dest(path.build.img))
         .pipe(browsersync.stream())
 }
+
+function fonts() {
+    src(path.src.fonts)
+        .pipe(ttf2woff())
+        .pipe(dest(path.build.fonts));
+    return src(path.src.fonts)
+        .pipe(ttf2woff2())
+        .pipe(dest(path.build.fonts));
+};
+
 function css() {
     return src(path.src.css)
         .pipe(
@@ -118,6 +133,7 @@ function css() {
                 cascade: true
             })
     )
+        .pipe(webpcss())
         .pipe(dest(path.build.css))
         .pipe(clean_css())
         .pipe(
@@ -145,6 +161,13 @@ function js() {
         .pipe(browsersync.stream())
 }
 
+gulp.task('otf2ttf', function () {
+    return src([sourse_folder + '/fonts/**/*.otf'])
+        .pipe(fonter({
+            formats: ['ttf']
+        }))
+        .pipe(dest(sourse_folder + '/fonts/'));
+})
 
 function watchFiles(params) {
     gulp.watch([path.watch.html], html);
@@ -162,6 +185,7 @@ function clean(params) {
 let build = gulp.series(clean, gulp.parallel(images, libs, fonts, media, js, css, html, images));
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
+exports.fonts = fonts;
 exports.images = images;
 exports.libs = libs;
 exports.media = media;

@@ -1,31 +1,10 @@
 @import "_mixins"
 
-@mixin text($size: inherit, $color: #000000, $weight: inherit, $line: initial, $case: inherit, $spacing: auto)
-    font-size: $size
-    color: $color
-    // font-family: $fontFamily
-    font-weight: $weight
-    line-height: $line
-    text-transform: $case
-    letter-spacing: $spacing
 
-@media screen and (max-width: 1501px)
-    body
-        font-size: 90%
-        background-color: #1fc710
-    
+h1
+    @include text( 2em,#000000, 600,  auto,  inherit, auto)
+    font-family: 'Gotham Pro'
 
-@media screen and (max-width: 1001px)
-    body
-        font-size: 80%
-
-body
-    background-color: #fd0404
-    display: flex
-    @media screen and ( max-width: 1200px )
-        font-size: 50%
-p        
-    font-size: 2em
     @media screen and ( max-width: 1200px )
         font-size: 3em
         
@@ -37,13 +16,9 @@ section
     background-color: #1231e0
     @include flex(69%,10vh)
     flex-direction: column
-    // background-image:  src('/image/home-page.jpg') 
-    // background-size: cover
-    // background-position: center
-    // background-repeat: no-repeat
+    background:  url('../image/home-page.jpg')center/cover, no-repeat
     p
-        font-size: 10px
         @include flex-center (80%,15vh)
-        @include text (2em, #ad0c0c, 800, auto, inherit, auto )
+        @include text (2em, #34ad0c, 800, auto, inherit, auto )
 .cool 
     flex-direction: column

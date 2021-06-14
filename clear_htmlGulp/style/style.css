@@ -1,0 +1,88 @@
+html,
+body {
+  margin: 0 auto;
+  padding: 0;
+  font-size: 100%;
+  background-color: #c9c9c9;
+}
+
+section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url("../fonts/gotam/GothamPro.woff");
+}
+
+h1 {
+  font-size: 2em;
+  color: #000000;
+  font-weight: 600;
+  line-height: auto;
+  text-transform: inherit;
+  letter-spacing: auto;
+  font-family: 'Gotham Pro';
+}
+
+section {
+  width: 100%;
+  min-height: auto;
+  font-size: 2em;
+  color: #222222;
+  font-weight: 500;
+  line-height: auto;
+  text-transform: inherit;
+  letter-spacing: auto;
+}
+
+.ffaf {
+  background-color: #1231e0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 69%;
+  min-height: 10vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: url("../image/home-page.jpg") center/cover, no-repeat;
+}
+
+.ffaf p {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80%;
+  min-height: 15vh;
+  font-size: 2em;
+  color: #34ad0c;
+  font-weight: 800;
+  line-height: auto;
+  text-transform: inherit;
+  letter-spacing: auto;
+}
+
+.cool {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media screen and (max-width: 1200px) {
+  h1 {
+    font-size: 3em;
+  }
+}
+
+.webp .ffaf { background: url(../image/home-page.webp) center/cover, no-repeat; }

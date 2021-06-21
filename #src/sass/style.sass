@@ -1,24 +1,2 @@
 @import "_mixins"
 
-
-h1
-    @include text( 2em,#000000, 600,  auto,  inherit, auto)
-    font-family: 'Gotham Pro'
-
-    @media screen and ( max-width: 1200px )
-        font-size: 3em
-        
-section
-    @include size(100%,auto)
-    @include text (2em, #222222, 500, auto, inherit, auto )
-
-.ffaf
-    background-color: #1231e0
-    @include flex(69%,10vh)
-    flex-direction: column
-    background:  url('../image/home-page.jpg')center/cover, no-repeat
-    p
-        @include flex-center (80%,15vh)
-        @include text (2em, #34ad0c, 800, auto, inherit, auto )
-.cool 
-    flex-direction: column

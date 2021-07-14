@@ -1,6 +1,7 @@
 #src/
 node_modules/
-gulpfile.js
+# gulpfile.js
 package-lock.json
 package.json
 README.md
+.gitignore

@@ -1,2 +1,73 @@
 @import "_mixins"
 
+body
+    background-color: #0ff7d8d2
+    overflow-y: hidden
+    max-height: 100vh
+   
+
+button
+    cursor: pointer
+// TABS=============================================================================================
+.btn-menu
+    @include flex(100%,auto,auto )
+    // width: 138px
+    // height: 30px
+    position: absolute
+    z-index: 1
+    top: 0
+    justify-content: flex-end
+    background-color: #9e0606
+
+.tabs__nav
+    @include flex(15vw,auto,auto )
+    // margin: 5px
+
+.tabs__nav-btn
+    @include flex-center(4vw, auto ,auto )
+    margin-left: 5px
+    border: none
+    outline: none
+    font-style: normal
+    font-weight: normal
+    color: #000000
+    border-radius: 5px
+    img
+        @include size(3vw, auto ,auto )
+
+.tabs__nav-btn:last-child
+    border-right: none
+
+.tabs__nav-btn:hover
+    outline: none
+    background-color: #ddd
+
+.tabs__nav-btn.active
+    outline: none
+    background: linear-gradient(90deg, #0b41915e 0%, #02fce7 100%)
+    color: #fff
+
+.tabs__content
+    transform: rotate(90deg)
+    @include flex(auto,100vh,auto )
+    background-color: #0fe908
+   
+    // @include flex(auto,auto,auto )
+    
+
+.tabs__item
+    display: none
+
+.tabs__item.active
+    display: flex
+// TABS - END =============================================================================================
+
+.main_container
+    transform: rotate(-90deg)
+    // max-width: 90vw
+    // overflow-y: auto
+    // overflow-x: hidden
+    .inner_content
+        @include flex(100vw,auto,auto )
+        background-color: #0831e9
+        border: 2px solid black

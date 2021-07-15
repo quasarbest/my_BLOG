@@ -1,0 +1,132 @@
+html,
+body {
+  margin: 0 auto;
+  padding: 0;
+  font-size: 100%;
+  overflow-y: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #0ff7d8d2;
+  overflow-y: hidden;
+  max-height: 100vh;
+}
+
+button {
+  cursor: pointer;
+}
+
+.btn-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: auto;
+  min-height: auto;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  background-color: #9e0606;
+}
+
+.tabs__nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 15vw;
+  height: auto;
+  min-height: auto;
+}
+
+.tabs__nav-btn {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 4vw;
+  height: auto;
+  min-height: auto;
+  margin-left: 5px;
+  border: none;
+  outline: none;
+  font-style: normal;
+  font-weight: normal;
+  color: #000000;
+  border-radius: 5px;
+}
+
+.tabs__nav-btn img {
+  width: 3vw;
+  height: auto;
+  min-height: auto;
+}
+
+.tabs__nav-btn:last-child {
+  border-right: none;
+}
+
+.tabs__nav-btn:hover {
+  outline: none;
+  background-color: #ddd;
+}
+
+.tabs__nav-btn.active {
+  outline: none;
+  background: -webkit-gradient(linear, left top, right top, from(#0b41915e), to(#02fce7));
+  background: -o-linear-gradient(left, #0b41915e 0%, #02fce7 100%);
+  background: linear-gradient(90deg, #0b41915e 0%, #02fce7 100%);
+  color: #fff;
+}
+
+.tabs__content {
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: auto;
+  height: 100vh;
+  min-height: auto;
+  background-color: #0fe908;
+}
+
+.tabs__item {
+  display: none;
+}
+
+.tabs__item.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.main_container {
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
+.main_container .inner_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100vw;
+  height: auto;
+  min-height: auto;
+  background-color: #0831e9;
+  border: 2px solid black;
+}

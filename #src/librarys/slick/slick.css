@@ -106,14 +106,14 @@
 {
     visibility: hidden;
 }
-.slick-vertical .slick-slide
+/* .slick-vertical .slick-slide
 {
-    display: block;
+    display: flex;
 
     height: auto;
 
     border: 1px solid transparent;
-}
+} */
 .slick-arrow.slick-hidden {
     display: none;
 }

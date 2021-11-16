@@ -1351,6 +1351,10 @@ span:nth-of-type(21) {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  opacity: 0;
+  -webkit-transition: 4s;
+  -o-transition: 4s;
+  transition: 4s;
 }
 
 .block_content {
@@ -1405,6 +1409,12 @@ span:nth-of-type(21) {
 }
 
 .block_content_portfolio {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1415,18 +1425,87 @@ span:nth-of-type(21) {
 }
 
 .img_portfolio {
-  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
   height: auto;
+  min-height: auto;
+  cursor: pointer;
+  -webkit-transition: .9s;
+  -o-transition: .9s;
+  transition: .9s;
+  -webkit-box-shadow: 0 0 20px -5px white;
+          box-shadow: 0 0 20px -5px white;
+  z-index: 1;
+  -webkit-animation: pulsImg 5s infinite;
+          animation: pulsImg 5s infinite;
+}
+
+@-webkit-keyframes pulsImg {
+  0% {
+    -webkit-transform: scale(0.97, 0.97);
+            transform: scale(0.97, 0.97);
+  }
+
+  50% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+
+  100% {
+    -webkit-transform: scale(0.97, 0.97);
+            transform: scale(0.97, 0.97);
+  }
+}
+
+@keyframes pulsImg {
+  0% {
+    -webkit-transform: scale(0.97, 0.97);
+            transform: scale(0.97, 0.97);
+  }
+
+  50% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+
+  100% {
+    -webkit-transform: scale(0.97, 0.97);
+            transform: scale(0.97, 0.97);
+  }
+}
+
+.anime_img {
+  top: 9.2%;
+  width: 82vw;
+  height: auto;
+  position: relative;
+  -webkit-box-shadow: 0 0 20px -5px white;
+          box-shadow: 0 0 20px -5px white;
+  z-index: 1;
+  -webkit-transition: .9s;
+  -o-transition: .9s;
+  transition: .9s;
+  -webkit-animation: none;
+          animation: none;
 }
 
 .block_content_portfolio_text {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 50%;
+  width: 100%;
   height: auto;
-  min-height: 300px;
+  min-height: 80vh;
   background-color: #27db07;
+  -webkit-transition: 1.3s;
+  -o-transition: 1.3s;
+  transition: 1.3s;
+}
+
+.opacity {
+  opacity: 0;
 }
 
 .page_four {

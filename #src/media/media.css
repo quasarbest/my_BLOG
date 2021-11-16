@@ -21,7 +21,9 @@
    .mouse_anime {
       display: none;
    }
-
+.inner_page_three {
+   opacity: 1;
+}
    .tabs__content {
       transform: none;
       overflow: auto;

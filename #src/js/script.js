@@ -132,16 +132,13 @@ let mainContainer = document.querySelector(".main_container");
 var isScrolling; // скролл с последующей очисткой таймаута
 var stateCard = 0; // количество завершенных скролов
 mainContainer.addEventListener("scroll", function () {
-   let percent = (this.scrollTop / this.offsetWidth ) * 115;
-   // console.log(percent);
-   
+   let percent = (this.scrollTop / this.offsetWidth) * 110;
+   console.log(percent);
+
    window.clearTimeout(isScrolling); // чистим таймаут
    // если скрол больше 100, значит ты проскролил одну секцию
-   
-   if (
-      (percent > 100 && percent < 200) 
-      
-   ) {
+ 
+   if (percent > 100 && percent < 200) {
       isScrolling = setTimeout(function () {
          // при каждом завершении одного скрола stateCard ростет
          stateCard++;
@@ -163,6 +160,10 @@ mainContainer.addEventListener("scroll", function () {
             document
                .querySelector(".block_level__six")
                .classList.add("anime_six");
+         }
+         let pageThree = document.querySelector(".inner_page_three");
+         if (percent >= 190) {
+            pageThree.style.opacity = "1";
          }
          let percentSpanFirst = (document.querySelector(".anime").style.height =
             85 + "%");
@@ -201,18 +202,17 @@ mainContainer.addEventListener("scroll", function () {
             ".percent_number__six"
          ).textContent = percentSpanSixth);
          // тут ты обнуляешь скрол когда все анимации выполнились.
-         if (stateCard > 1) {
+         if (stateCard > 10) {
             stateCard = 0;
          }
-         // console.log(stateCard);
+         console.log(stateCard);
       }, 100);
    }
-   
-   
 });
 
 function myFunction(x) {
-   if (x.matches) { // Если медиа запрос совпадает
+   if (x.matches) {
+      // Если медиа запрос совпадает
       document.querySelector(".block_level__one").classList.add("anime");
       document.querySelector(".block_level__two").classList.add("anime_two");
       document
@@ -238,15 +238,13 @@ function myFunction(x) {
       let percentSpanSixth = (document.querySelector(
          ".anime_six"
       ).style.height = 85 + "%");
-    
-  } else {
-  
-  }
+   } else {
+   }
 }
 
-var x = window.matchMedia("(max-width: 1001px)")
-myFunction(x) // Вызов функции прослушивателя во время выполнения
-x.addListener(myFunction) // Присоединить функцию прослушивателя при изменении состояния
+var x = window.matchMedia("(max-width: 1001px)");
+myFunction(x); // Вызов функции прослушивателя во время выполнения
+x.addListener(myFunction); // Присоединить функцию прослушивателя при изменении состояния
 
 // PAGE THREE Verticl slider ==============================================
 $(function () {
@@ -254,8 +252,23 @@ $(function () {
       vertical: true,
       verticalSwiping: true,
       slidesToShow: 1,
-      autoplay: true,
+      // autoplay: true,
       prevArrow: $(".next_slide_vertical"),
       nextArrow: $(".prev_slide_vertical"),
    });
 });
+
+// page three anime img ===================================================
+let animeimg = document.querySelectorAll(".img_portfolio");
+for (let i = 0; i < animeimg.length; i++) {
+   animeimg[i].addEventListener("click", function () {
+      animeimg[i].classList.toggle("anime_img");
+      opacity();
+   });
+}
+let blockOpacity = document.querySelectorAll(".block_content_portfolio_text");
+function opacity() {
+   for (let i = 0; i < blockOpacity.length; i++) {
+      blockOpacity[i].classList.toggle("opacity");
+   }
+}

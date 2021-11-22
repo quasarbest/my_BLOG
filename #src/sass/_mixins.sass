@@ -1,16 +1,18 @@
 html, body
     margin: 0 auto
     padding: 0
-    // overflow-y: hidden
+    overflow-y: hidden
     font-family: 'Raleway-Medium'
     font-size: 100%
     width: auto
     height: auto
+    // background: linear-gradient(90deg, #222222bb 0%, #000000bb 100%)
     
 *
     margin: 0
     padding: 0
-
+a
+    text-decoration: none
 @font-face
     font-family: 'Raleway-Medium'
     src: url("../fonts/Raleway-Medium.woff")
@@ -53,13 +55,5 @@ html, body
     box-sizing: border-box
     @include flex-center($width,$height,$min )
 
-$maxWidth: 1920
-@mixin adaptiv-font($pcSize, $mobSize)
-    $addSize: $pcSize - $mobSize
-    $addMobiSize: $addSize + $addSize * 0.2
-    @media screen and ( max-width: 1920px )
-        font-size: calc( #{$mobSize + px} + #{$addMobiSize} * ((100vw - 320px) / #{$maxWidth}))
-    @media screen and ( min-width: 320px )
-        font-size: calc( #{$mobSize + px} + #{$addMobiSize} * ((100vw / #{$maxWidth}))
-        
+
     

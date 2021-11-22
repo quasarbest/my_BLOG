@@ -137,7 +137,7 @@ mainContainer.addEventListener("scroll", function () {
 
    window.clearTimeout(isScrolling); // чистим таймаут
    // если скрол больше 100, значит ты проскролил одну секцию
- 
+
    if (percent > 100 && percent < 200) {
       isScrolling = setTimeout(function () {
          // при каждом завершении одного скрола stateCard ростет
@@ -162,7 +162,11 @@ mainContainer.addEventListener("scroll", function () {
                .classList.add("anime_six");
          }
          let pageThree = document.querySelector(".inner_page_three");
-         if (percent >= 190) {
+         let animeVerticalSlider = document.querySelector(
+            ".btn_nav_slider_vertical"
+         );
+         if (percent >= 165) {
+            animeVerticalSlider.classList.add("btn_nav_slider_vertical_active");
             pageThree.style.opacity = "1";
          }
          let percentSpanFirst = (document.querySelector(".anime").style.height =
@@ -263,9 +267,11 @@ let animeimg = document.querySelectorAll(".img_portfolio");
 for (let i = 0; i < animeimg.length; i++) {
    animeimg[i].addEventListener("click", function () {
       animeimg[i].classList.toggle("anime_img");
+
       opacity();
    });
 }
+
 let blockOpacity = document.querySelectorAll(".block_content_portfolio_text");
 function opacity() {
    for (let i = 0; i < blockOpacity.length; i++) {
